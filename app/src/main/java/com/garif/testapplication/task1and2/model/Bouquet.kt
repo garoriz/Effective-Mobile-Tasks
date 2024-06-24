@@ -1,4 +1,4 @@
-package com.garif.testapplication.database.model
+package com.garif.testapplication.task1and2.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -10,4 +10,5 @@ data class Bouquet(
     @ColumnInfo(name = "bouquet_id")
     val bouquetId: Int,
     val name: String,
+    val design: String,
 )

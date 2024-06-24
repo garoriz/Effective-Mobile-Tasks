@@ -1,4 +1,4 @@
-package com.garif.testapplication.database.model
+package com.garif.testapplication.task1and2.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -11,4 +11,6 @@ data class Flower(
     val flowerId: Int,
     val name: String,
     var stock: Int,
+    @ColumnInfo(name = "country_of_manufacture")
+    var countryOfManufacture: String,
 )

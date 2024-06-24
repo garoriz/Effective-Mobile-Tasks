@@ -48,6 +48,16 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     kapt(libs.androidx.room.compiler)
 
+    // region Network
+    val retrofit = "2.9.0"
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    val okhttp = "4.9.3"
+    implementation(libs.okhttp)
+    debugImplementation(libs.logging.interceptor)
+    // endregion
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

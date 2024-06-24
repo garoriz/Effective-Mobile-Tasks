@@ -1,11 +1,11 @@
-package com.garif.testapplication.database.dao
+package com.garif.testapplication.task1and2.dao
 
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
-import com.garif.testapplication.database.model.BouquetFlower
-import com.garif.testapplication.database.model.Flower
+import com.garif.testapplication.task1and2.model.BouquetFlower
+import com.garif.testapplication.task1and2.model.Flower
 
 
 @Dao

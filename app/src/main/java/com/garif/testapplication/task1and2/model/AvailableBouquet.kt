@@ -1,4 +1,4 @@
-package com.garif.testapplication.database.model
+package com.garif.testapplication.task1and2.model
 
 data class AvailableBouquet(
     val bouquetId: Int,
