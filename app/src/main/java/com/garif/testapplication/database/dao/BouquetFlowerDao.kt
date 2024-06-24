@@ -1,0 +1,38 @@
+package com.garif.testapplication.database.dao
+
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Transaction
+import androidx.room.Update
+import com.garif.testapplication.database.model.BouquetFlower
+import com.garif.testapplication.database.model.Flower
+
+
+@Dao
+interface BouquetFlowerDao {
+    @Query("SELECT * FROM bouquet_flower WHERE bouquet_id = :bouquetId")
+    suspend fun getBouquetFlowers(bouquetId: Int): List<BouquetFlower>
+
+    @Query("SELECT * FROM flowers WHERE flower_id = :id")
+    suspend fun getFlowerById(id: Int): Flower
+
+    @Update
+    suspend fun updateFlower(flower: Flower)
+
+    @Transaction
+    suspend fun buyBouquet(bouquetId: Int) {
+        val bouquetFlowers: List<BouquetFlower> = getBouquetFlowers(bouquetId)
+
+        for ((_, flowerId, quantity) in bouquetFlowers) {
+            val flower: Flower = getFlowerById(flowerId)
+            flower.stock -= quantity
+            check(flower.stock >= 0) { "Not enough flowers in stock" }
+            updateFlower(flower)
+        }
+    }
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertBouquetFlower(bouquetFlower: BouquetFlower)
+}
